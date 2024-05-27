@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Article preview component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 
+    - Mobile: 375px
+    - Desktop: 1440px-->
+  <style>
+    :root {
+      --offwhite: hsl(210, 46%, 95%);
+      --lightblue: hsl(212, 23%, 69%);
+      --blue: hsl(214, 17%, 51%);
+      --grey: hsl(217, 19%, 35%);
+      --white: #fff;
+      --font-size: 13px;
+      --width-mobile: 375px;
+      --width-desktop: 1440px;
+    }
+
+    html {
+      display: grid;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    body {
+      background-color: var(--offwhite);
+      margin: auto;
+    }
+
+    section {
+      max-width: var(--width-mobile);
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+    }
+
+    picture img {
+        max-width: var(--width-mobile);
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    
+    h2 {
+      color: hsl(212, 21%, 14%);
+      font-family: "Manrope", serif;
+      font-optical-sizing: auto;
+      font-weight: 700;
+      font-style: normal;
+      font-size: clamp(1rem, 1.5rem + 1vw, 1.5rem);
+      margin: 0;
+    }
+
+    p, span {
+      color: var(--grey);
+      font-family: "Montserrat", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      font-size: clamp(0.5rem, 1rem + 1vw, 1rem);
+      line-height: 1.5rem;
+    }
+
+    .card-white {
+      background-color: var(--white);
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      padding: 1rem;
+    }
+
+    .name {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .name img {
+      height: 3rem;
+      border-radius: 100%;
+    }
+
+    .name span {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    button {
+      background-color: var(--offwhite);
+      padding: 1rem;
+      border-radius: 100%;
+      border: none;
+      content: '';
+      background-image: url('images/icon-share.svg');
+      background-size: 1.5rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 3rem;
+      width: 3rem;
+      z-index: 10;
+    }
+
+    button:hover {
+      background-color: var(--lightblue);
+      background-image: url('images/icon-share-hover.svg');
+      cursor: pointer;
+    }
+
+    button:active {
+      background-color: var(--lightblue);
+    }
+
+    .tooltip {
+      position: absolute;
+      right: 26%;
+      bottom: 5%;
+    }
+
+    .tooltiptext  {
+      background-color: var(--grey);
+      color: var(--white);
+      text-align: center;
+      border-radius: 6px;
+      position: absolute;
+      z-index: 0;
+      bottom: 4%;
+      right: 24%;
+      transition: opacity 0.3s;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      width: 327px;
+    }
+
+    .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent;
+    }
+
+    .tooltiptext img {
+      height: 20px;
+      width: 20px;
+      margin-left: 1rem;
+    }
+
+    .tooltiptext img:last-child {
+      margin-right: 1rem;
+    }
+
+    .tooltiptext span {
+      color: var(--white);
+    }
+    /*Media query for deskop for width and flex-flow*/
+    @media screen and (min-width: 1440px) {
+      section {
+        flex-flow: row;
+      }
+      picture img {
+        min-height: var(--width-mobile);
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+      .card-white {
+        min-width: calc(var(--width-mobile)*1.3);
+        max-height: var(--width-mobile);
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        flex-flow: column;
+      }
+      .name span {
+        margin-left: 1rem;
+        margin-right: auto;
+      }
+      .tooltip {
+        position: absolute;
+        right: 20%;
+        bottom: 25%;
+      }
+      .tooltiptext {
+        background-color: var(--grey);
+        color: var(--white);
+        text-align: center;
+        border-radius: 6px;
+        position: absolute;
+        right: 10%;
+        bottom: 34%; 
+        transition: opacity 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        padding: 1rem;
+    }
+    .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: var(--grey) transparent transparent transparent;
+    }
+  }
+  </style>
+</head>
+<body>
+  <section>
+    <picture>
+      <img 
+        src="images/drawers.jpg" 
+        alt="drawers">
+    </picture>
+    <div class="card-white">
+      <h2>Shift the overall look and feel by adding these wonderful touches to furniture in your home</h2>
+      <p>Ever been in a room and felt like something was missing? Perhaps it felt slightly bare and uninviting. I’ve got some simple tips to help you make any room feel complete.</p>
+      <div class="name">
+          <img src="images/avatar-michelle.jpg"alt="michelle">
+          <span><b>Michelle Appleton</b><br>
+            28 Jun 2020</span>
+      </div>
+        <button class="tooltip" onclick="show()">
+        </button>
+        <div id="thing" class="tooltiptext" style="display:none;">
+          <span>SHARE</span>
+          <a href="https://www.facebook.com"><img src="images/icon-facebook.svg" alt="facebook"></a>
+          <a href="https://www.twitter.com"><img src="images/icon-twitter.svg" alt="twitter"></a>
+          <a href="https://www.pinterest.com"><img src="images/icon-pinterest.svg" alt="pinterest"></a>
+        </div>
+
+    </div>
+  </section>
+</body>
+<script>
+  function show() {
+    var x = document.getElementById("thing");
+    if (x.style.display === "none") {
+      x.style.display = "flex";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
+</html>

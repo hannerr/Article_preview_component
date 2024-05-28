@@ -57,6 +57,7 @@
       font-style: normal;
       font-size: clamp(1rem, 1.5rem + 1vw, 1.5rem);
       margin: 0;
+      padding: 1rem 1rem 0 1rem;
     }
 
     p, span {
@@ -67,18 +68,22 @@
       font-style: normal;
       font-size: clamp(0.5rem, 1rem + 1vw, 1rem);
       line-height: 1.5rem;
+      padding: 1rem 1rem 0 1rem;
     }
 
     .card-white {
       background-color: var(--white);
       border-bottom-right-radius: 10px;
       border-bottom-left-radius: 10px;
-      padding: 1rem;
     }
-
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+    }
     .name {
       display: flex;
       justify-content: flex-start;
+      padding: 0 1rem 0 1rem;
     }
 
     .name img {
@@ -89,11 +94,12 @@
     .name span {
       margin-left: 1rem;
       margin-right: 1rem;
+      margin-bottom: 1rem;
+      padding: 0;
     }
 
     button {
       background-color: var(--offwhite);
-      padding: 1rem;
       border-radius: 100%;
       border: none;
       content: '';
@@ -115,27 +121,18 @@
     button:active {
       background-color: var(--lightblue);
     }
-
     .tooltip {
-      position: absolute;
-      right: 26%;
-      bottom: 5%;
+      position: relative;
+      margin-right: 1rem;
     }
-
     .tooltiptext  {
       background-color: var(--grey);
       color: var(--white);
       text-align: center;
       border-radius: 6px;
       position: absolute;
-      z-index: 0;
-      bottom: 4%;
-      right: 24%;
       transition: opacity 0.3s;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      margin-top: 2rem;
+      margin-top: unset;
       padding: 1.5rem;
       width: 327px;
     }
@@ -188,14 +185,13 @@
         justify-content: space-between;
         flex-flow: column;
       }
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+      }
       .name span {
         margin-left: 1rem;
         margin-right: auto;
-      }
-      .tooltip {
-        position: absolute;
-        right: 20%;
-        bottom: 25%;
       }
       .tooltiptext {
         background-color: var(--grey);
@@ -203,10 +199,7 @@
         text-align: center;
         border-radius: 6px;
         position: absolute;
-        right: 10%;
-        bottom: 34%; 
         transition: opacity 0.3s;
-        display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 2rem;
@@ -235,11 +228,12 @@
     <div class="card-white">
       <h2>Shift the overall look and feel by adding these wonderful touches to furniture in your home</h2>
       <p>Ever been in a room and felt like something was missing? Perhaps it felt slightly bare and uninviting. I’ve got some simple tips to help you make any room feel complete.</p>
-      <div class="name">
-          <img src="images/avatar-michelle.jpg"alt="michelle">
-          <span><b>Michelle Appleton</b><br>
-            28 Jun 2020</span>
-      </div>
+      <div class="bottom">
+        <div class="name">
+            <img src="images/avatar-michelle.jpg"alt="michelle">
+            <span><b>Michelle Appleton</b><br>
+              28 Jun 2020</span>
+        </div>
         <button class="tooltip" onclick="show()">
         </button>
         <div id="thing" class="tooltiptext" style="display:none;">
@@ -248,7 +242,7 @@
           <a href="https://www.twitter.com"><img src="images/icon-twitter.svg" alt="twitter"></a>
           <a href="https://www.pinterest.com"><img src="images/icon-pinterest.svg" alt="pinterest"></a>
         </div>
-
+      </div>
     </div>
   </section>
 </body>
@@ -256,7 +250,7 @@
   function show() {
     var x = document.getElementById("thing");
     if (x.style.display === "none") {
-      x.style.display = "flex";
+      x.style.display = "block";
     } else {
       x.style.display = "none";
     }

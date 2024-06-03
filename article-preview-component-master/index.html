@@ -123,7 +123,7 @@
     }
     .tooltip {
       position: relative;
-      margin-right: 1rem;
+      margin: 3% 1rem;
     }
     .tooltiptext  {
       background-color: var(--grey);
@@ -159,7 +159,8 @@
     }
 
     .tooltiptext span {
-      color: var(--white);
+      color: var(--lightblue);
+      padding: 0;
     }
     /*Media query for deskop for width and flex-flow*/
     @media screen and (min-width: 1440px) {
@@ -199,11 +200,11 @@
         text-align: center;
         border-radius: 6px;
         position: absolute;
+        right: 15.5%;
+        bottom: 37%;
         transition: opacity 0.3s;
-        justify-content: center;
-        align-items: center;
-        margin-top: 2rem;
         padding: 1rem;
+        width: unset;
     }
     .tooltiptext::after {
       content: "";
@@ -250,7 +251,7 @@
   function show() {
     var x = document.getElementById("thing");
     if (x.style.display === "none") {
-      x.style.display = "block";
+      x.style.display = "inline-flex";
     } else {
       x.style.display = "none";
     }
